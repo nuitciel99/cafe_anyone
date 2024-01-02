@@ -1,0 +1,23 @@
+package kr.co.jykjy.domain;
+
+import lombok.Builder;
+
+public class Criteria {
+		// 페이지 번호
+		// 페이지 수량
+		// 카테고리
+		// 검색 조건 : T > Title, C > Content, I > Id
+		// 검색어
+		@Builder.Default
+		private int pageNum = 1;
+		@Builder.Default
+		private int amount = 10;
+		@Builder.Default
+		private int category = 1;
+		@Builder.Default
+		private String type = "";
+		@Builder.Default
+		private String keyword = "";
+		
+
+}

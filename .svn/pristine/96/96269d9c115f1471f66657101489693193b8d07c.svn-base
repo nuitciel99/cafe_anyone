@@ -1,0 +1,35 @@
+package kr.co.jykjy.controller.cart;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.jykjy.service.CartService;
+import kr.co.jykjy.service.ProductService;
+
+@WebServlet("/cart/list")
+public class CartList extends HttpServlet{
+	
+	private ProductService productService = ProductService.getProductService();
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String proName = req.getParameter("proName");
+		String proStmt = req.getParameter("proStmt");
+		String proSize = req.getParameter("proSize");
+		String cupChoice = req.getParameter("cupChoice");
+		
+		req.getRequestDispatcher("/WEB-INF/views/order/cart.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+	}
+
+}

@@ -1,0 +1,31 @@
+/**
+ * 2023.10.19
+ */
+
+// 상단 메뉴
+const scrollPosition = () => {
+	const header = document.querySelector('header');
+    let scroll = this.scrollY;
+    let headheight = header.clientHeight;
+    
+    if(scroll > headheight) {
+        header.classList.add('fixed');
+    } else {
+        header.classList.remove('fixed');
+    }
+}
+window.addEventListener('load', scrollPosition);
+window.addEventListener('scroll', scrollPosition);
+
+// 검색 focusin
+document.querySelector('.overlay').addEventListener('click', (e) => {
+    e.target.closest('.search').classList.add('active');
+    e.target.nextElementSibling.focus();
+});
+
+// 검색 focusout
+document.querySelector('.inp_search').addEventListener('focusout', (e) => {
+    e.target.value = '';
+    e.target.closest('.search').classList.remove('active');
+});
+

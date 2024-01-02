@@ -1,0 +1,26 @@
+package kr.co.jykjy.domain;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Cart {
+	
+	private int cartNo;
+	private int proPrice;
+	private int proAmt;
+	private int stmt;
+	private String id;
+	private String cupSize;
+	private int cartcate;
+	private int proNo;
+	private Date regDate; 
+
+}

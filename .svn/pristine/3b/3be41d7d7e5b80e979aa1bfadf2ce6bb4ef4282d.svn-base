@@ -1,0 +1,45 @@
+package kr.co.jykjy.controller.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import kr.co.jykjy.domain.Member;
+import kr.co.jykjy.service.CartService;
+import kr.co.jykjy.service.MemberService;
+import lombok.extern.log4j.Log4j;
+import util.UploadUtils;
+import util.Webutils;
+
+@Log4j
+@WebServlet("/profile/*")
+public class UploadController extends HttpServlet {
+	UploadUtils uploadUtils = new UploadUtils();
+	MemberService memberService;
+	Gson gson = new Gson();
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Member member = Webutils.getMember(req);
+		resp.setContentType("application/json; charset=utf-8");
+		Map<String, String> map = new HashMap<>();
+		map.put("img", member.getImg());
+		resp.getWriter().print(gson.toJson(map));
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+
+}

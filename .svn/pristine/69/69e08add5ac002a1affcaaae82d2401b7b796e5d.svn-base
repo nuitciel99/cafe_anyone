@@ -1,0 +1,11 @@
+package kr.co.jykjy.controller.cart;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+import kr.co.jykjy.service.cart.CartService;
+
+@WebServlet("/cart/list")
+public class CartList extends HttpServlet{
+
+}

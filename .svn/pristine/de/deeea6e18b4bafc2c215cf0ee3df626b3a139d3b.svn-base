@@ -1,0 +1,15 @@
+package kr.co.jykjy.service;
+
+import org.junit.Test;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class MemberServiceTests {
+	MemberService memberService = new MemberService();
+	
+	@Test
+	public void testmyBoard() {
+		memberService.findBoard("galgal5");
+	}
+}

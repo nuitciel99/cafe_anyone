@@ -1,0 +1,42 @@
+package kr.co.jykjy.mapper;
+
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import kr.co.jykjy.domain.Cart;
+
+public interface CartMapper {
+	// 장바구니 목록
+	List<Cart> getCart(String id);
+	
+	// 장바구니에서 메뉴/상품 갯수 수정
+	void update(Cart cart);
+	
+	// 수령 방식 cartcate 수정
+	int updateCartcate(String id);
+	
+	// 장바구니에서 메뉴/상품 선택 삭제
+	void delete(Long proNo);
+	
+	// 장바구니에 담긴 메뉴/상품 전체 삭제
+	void deleteAll(Long cartNo);
+
+	// 장바구니 추가
+	public int insert(Cart cart);
+			
+	// 장바구니 목록	
+	public List<Cart> getList(String id);
+	
+	// 회원 장바구니 목록
+	public Cart findByCartNo(String id);
+
+	// 장바구니 수정
+	public int modify(Cart cart);
+	
+	// 장바구니 삭제
+	public int remove(Cart cart);
+	
+	public List<Cart> get(@Param("id") String id, @Param("proNo") Long proNo);
+}

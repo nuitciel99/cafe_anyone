@@ -1,0 +1,36 @@
+package kr.co.jykjy.controller.product;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import util.Webutils;
+
+@WebServlet("/product/statement")
+public class ProductStatement extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int cate = Integer.parseInt(req.getParameter("category"));
+		
+		if (Webutils.getMember(req) == null) {
+			Webutils.alert(resp, "로그인 후 이용할 수 있습니다.", req.getContextPath() + "/member/login?href="
+					+ URLEncoder.encode("/product/list?category=" + cate, "utf-8"));
+			return;
+		}
+		
+//		req.setAttribute("pageDTO", new PageDTO(criteria, productService.getTotal(criteria)));
+		req.getRequestDispatcher("/WEB-INF/views/product/productStatement.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+}

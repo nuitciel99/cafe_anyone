@@ -1,0 +1,26 @@
+package kr.co.jykjy.mapper;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Member;
+
+public interface MemberMapper {
+	List<Member>  getList();
+	
+	public int insert(Member member);
+	
+	public int delete(String id);
+	
+	public int update(Member member);
+	
+	public Member getId(String id);
+	
+	// 회원 가입시 중복 체크
+	int selectOneById(String id); 
+	
+	
+	
+	
+	
+	
+}

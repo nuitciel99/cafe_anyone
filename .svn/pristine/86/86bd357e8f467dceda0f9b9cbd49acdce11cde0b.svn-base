@@ -1,0 +1,42 @@
+package kr.co.jykjy.service.cart;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.mapper.CartMapper;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class CartService{
+	
+	@Setter
+	private CartMapper cartMapper;
+
+	public void register(Cart cart) {
+		cart.setProPrice(4500);
+		cart.setProAmt(1);
+		cart.setId("galgal");
+		cart.setProNo(1);
+		
+		cartMapper.insert(cart);
+	}
+
+	public Cart getCart(int cartNo) {
+		Cart cart = new Cart();
+		log.info(cart);
+		return cartMapper.getCart(cartNo);
+	}
+	
+	public void remove(int proNo) {
+		cartMapper.delete(proNo);
+	}
+
+	public void removeAll(int cartNo) {
+		cartMapper.deleteAll(cartNo);
+	}
+	
+	
+	
+	
+}

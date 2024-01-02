@@ -1,0 +1,15 @@
+package kr.co.jykjy.mapper;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.PrAttach;
+
+public interface PrAttachMapper {
+	public List<PrAttach> getListAttatch();
+	
+	public List<PrAttach> findByNo(Long proNo);
+
+	public int attachInsert(PrAttach prAttach);
+	
+	public int attachDelete(Long proNo);
+}

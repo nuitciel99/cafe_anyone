@@ -1,0 +1,7 @@
+package kr.co.jykjy.mapper;
+
+import kr.co.jykjy.domain.Payment;
+
+public interface PaymentMapper {
+	public int insert(Payment payment);
+}

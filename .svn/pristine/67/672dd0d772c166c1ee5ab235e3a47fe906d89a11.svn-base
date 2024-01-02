@@ -1,0 +1,7 @@
+package kr.co.jykjy.mapper;
+
+import kr.co.jykjy.domain.PrAttach;
+
+public interface PrAttachMapper {
+	public int attachInsert(PrAttach prAttach);
+}

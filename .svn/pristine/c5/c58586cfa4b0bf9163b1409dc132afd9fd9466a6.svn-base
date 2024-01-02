@@ -1,0 +1,23 @@
+package kr.co.jykjy.service;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import kr.co.jykjy.domain.Criteria;
+import kr.co.jykjy.domain.PrAttach;
+import kr.co.jykjy.domain.ProCategory;
+import kr.co.jykjy.domain.Product;
+import kr.co.jykjy.mapper.PrAttachMapper;
+import kr.co.jykjy.mapper.ProCategoryMapper;
+import kr.co.jykjy.mapper.ProductMapper;
+import util.MybatisUtils;
+
+public class ProCategoryService {
+	private SqlSession sqlSession = MybatisUtils.sqlSessionFactory().openSession();
+	private ProCategoryMapper categoryMapper = sqlSession.getMapper(ProCategoryMapper.class);
+	
+	public List<ProCategory> getList() {
+		return categoryMapper.getListCategory();
+	}
+}

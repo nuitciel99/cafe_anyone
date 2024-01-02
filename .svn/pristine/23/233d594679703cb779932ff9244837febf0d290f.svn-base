@@ -1,0 +1,17 @@
+package util;
+
+import javax.servlet.http.HttpServletRequest;
+
+import kr.co.jykjy.domain.Member;
+
+
+public class Webutils {
+	public static Member getMember(HttpServletRequest req) {
+		Member member = null;         
+		if(req.getSession().getAttribute("member") != null) {    
+			member = (Member)req.getSession().getAttribute("member");  
+		}
+		return member;
+	}
+}
+

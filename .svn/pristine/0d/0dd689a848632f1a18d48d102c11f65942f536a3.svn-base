@@ -1,0 +1,31 @@
+package kr.co.jykjy.service;
+
+import kr.co.jykjy.domain.Member;
+import kr.co.jykjy.mapper.MemberMapper;
+import util.MybatisUtils;
+
+public class  MemberService {
+	private MemberMapper memberMapper = MybatisUtils.sqlSessionFactory().openSession(true)
+			.getMapper(MemberMapper.class);
+	
+	
+	// 회원 가입
+	public int signup(Member member) {
+		return 0;
+	}
+	// 아이디 중복 체크
+	public boolean isduplication(String id) {
+		return memberMapper.selectOneById(id) > 0 ? true : false;
+	}
+	
+	//로그인 
+	
+	
+	
+	
+	
+	
+		
+
+
+}

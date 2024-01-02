@@ -1,0 +1,33 @@
+package kr.co.jykjy.service;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.domain.Criteria;
+import kr.co.jykjy.mapper.CartMapper;
+import util.MybatisUtils;
+
+public class ProductCartService {
+	private CartMapper cartMapper = MybatisUtils.sqlSessionFactory().openSession(true).getMapper(CartMapper.class);
+
+	public int register(Cart cart) {
+		return cartMapper.insert(cart);
+	}
+	
+	public List<Cart> getList(Criteria cri) {
+		return cartMapper.getList(cri);
+	}
+	
+	public Cart findByCartNo(String id) {
+		return cartMapper.findByCartNo(id);
+	}
+	
+	public void remove(int proNo) {
+		cartMapper.delete(proNo);
+	}
+
+	public void removeAll(int cartNo) {
+		cartMapper.deleteAll(cartNo);
+	}
+}
+

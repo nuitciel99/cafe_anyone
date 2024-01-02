@@ -1,0 +1,42 @@
+package kr.co.jykjy.service;
+
+import org.junit.Test;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.service.cart.CartService;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class CartServiceTests {
+	
+	@Setter
+	private CartService cartService;
+	
+	@Test
+	public void testInsert() {
+
+		Cart cart = new Cart();
+		cart.setCartNo(1);
+		cart.setProPrice(4500);
+		cart.setProAmt(1);
+		cart.setId("testId");
+		cart.setProNo(1);
+		
+	}
+	 
+	@Test
+	public void testGetList() {
+		log.info(cartService.getCart(0));
+	}
+	
+	@Test
+	public void testRemove() {
+		cartService.remove(1);
+	}
+	
+	@Test
+	public void testRemoveAll() {
+		cartService.removeAll(0);
+	}
+}

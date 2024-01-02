@@ -1,0 +1,12 @@
+package kr.co.jykjy.mapper;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Order;
+
+public interface OrderMapper {
+		
+		// 주문 추가
+		public int insert(Order order);
+
+}

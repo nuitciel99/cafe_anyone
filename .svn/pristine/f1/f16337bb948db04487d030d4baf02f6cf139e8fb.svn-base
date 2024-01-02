@@ -1,0 +1,123 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starbucks</title>
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="product.css">
+</head>
+<body>
+    <div class="wrap">
+        <header class="sticky"> <!-- // 고정 -->
+            <div class="service">
+                <a class="history" href="#"><i class="fas fa-chevron-left"></i></a>
+                <!-- <form class="search">
+                    <div class="overlay"></div>
+                    <input class="inp_search" name="keyword" placeholder="검색어를 입력하세요" />
+                    <button><i class="bi bi-search"></i></button>
+                </form>
+                <a class="cart" href="#"><i class="fab fa-opencart"></i></a> -->
+            </div>
+            <div class="static">
+                <h1 class="logo">Starbucks® Store</h1>
+                <p class="welcome"><span>Welcome!</span>온라인 스토어에 오신 것을 환영합니다.</p>
+            </div>
+        </header>
+        <main>
+            <div class="sbComponent statement">
+                <h3 class="title">장바구니<button class="empty">전체삭제</button></h3>
+                <ul class="basket">
+                    <li>
+                        <img class="thumb" src="img/product_1.jpg" />
+                        <div class="option">
+                            <p class="name"><a href="#">Clarks Wallabee Black Suede</a></p>
+                            <p class="etc">iced | tall | 매장컵</p>
+                            <div class="price">
+                                <div class="count">
+                                    <i class="bi bi-dash-circle"></i>
+                                    <span>1</span>
+                                    <i class="bi bi-plus-circle"></i>
+                                </div>
+                                <strong><span>80,000</span>원</strong>
+                            </div>
+                        </div>
+                        <button class="btn_remove"><i class="bi bi-x-square"></i></button>
+                    </li>
+                    <li>
+                        <img class="thumb" src="img/product_2.jpg" />
+                        <div class="option">
+                            <p class="name"><a href="#">Clarks Wallabee Black Suede</a></p>
+                            <p class="etc">iced | tall | 매장컵</p>
+                            <div class="price">
+                                <div class="count">
+                                    <i class="bi bi-dash-circle"></i>
+                                    <span>2</span>
+                                    <i class="bi bi-plus-circle"></i>
+                                </div>
+                                <strong><span>160,000</span>원</strong>
+                            </div>
+                        </div>
+                        <button class="btn_remove"><i class="bi bi-x-square"></i></button>
+                    </li>
+                    <li>
+                        <img class="thumb" src="img/product_3.jpg" />
+                        <div class="option">
+                            <p class="name"><a href="#">Clarks Wallabee Black Suede</a></p>
+                            <p class="etc">iced | tall | 매장컵</p>
+                            <div class="price">
+                                <div class="count">
+                                    <i class="bi bi-dash-circle"></i>
+                                    <span>1</span>
+                                    <i class="bi bi-plus-circle"></i>
+                                </div>
+                                <strong><span>80,000</span>원</strong>
+                            </div>
+                        </div>
+                        <button class="btn_remove"><i class="bi bi-x-square"></i></button>
+                    </li>
+                </div>
+                <div class="payment">
+                    <div class="inner">
+                        <a href="#" class="btnb">주문하기</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <ul class="terms">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+            </ul>
+            <p class="company">주식회사 에스씨케이컴퍼니<br>사업장소재지 : 서울특별시 중구 퇴계로 100 9F (04631)</p>
+            <p class="copyright">ⓒ 2023 Starbucks Coffee Company. All Rights Reserved.</p>
+        </footer>
+        <!-- modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        상품 구매를 하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-primary">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //modal -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.querySelector('.pay').addEventListener('click', () => {
+            document.querySelector('.modal').classList.add('show');
+        });
+    </script>
+</body>
+</html>

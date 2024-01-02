@@ -1,0 +1,35 @@
+package kr.co.jykjy.controller.board;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.jykjy.domain.Board;
+import kr.co.jykjy.service.BoardService;
+
+@WebServlet("/board/write")
+public class BoardWrite extends HttpServlet {
+	private BoardService boardService = new BoardService();
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/WEB-INF/views/board/board_write.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		
+		// 구현 미완성
+//		Board board = Board.builder().title(title).content(content).build();
+//		boardService.register(board);
+		resp.sendRedirect("list");
+	}
+	
+	
+}

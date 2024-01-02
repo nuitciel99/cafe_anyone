@@ -1,0 +1,63 @@
+package kr.co.jykjy.controller.cart;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.domain.Criteria;
+import kr.co.jykjy.domain.Order;
+import kr.co.jykjy.domain.PageDTO;
+import kr.co.jykjy.service.CartService;
+import kr.co.jykjy.service.OrderService;
+import kr.co.jykjy.service.ProductService;
+
+@WebServlet("/cart/list")
+public class CartList extends HttpServlet{
+	
+	private ProductService productService = ProductService.getProductService();
+	private CartService cartService = CartService.getCartService();
+	private OrderService orderService = OrderService.getOrderService();
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String cate = req.getParameter("category");
+		
+		Criteria.CriteriaBuilder cb = Criteria.builder();
+		
+		if (cate != null) {
+			cb.category(Integer.parseInt(cate));
+		}
+		
+		Criteria criteria = cb.build();
+		List<Cart> cart = cartService.getList("kal",1);
+
+		for(Cart c : cart) {
+			c.setAttachs(productService.findByNo(c.getProNo()));
+		}
+
+		req.setAttribute("pageDTO", new PageDTO(criteria, productService.getTotal(criteria)));
+		req.setAttribute("cart", cart);
+		
+		req.getRequestDispatcher("/WEB-INF/views/order/cart.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		req.setCharacterEncoding("UTF-8");
+//		String proPrice = req.getParameter("proPrice");
+//		String proName = req.getParameter("proName");
+//		Long cartNo = Long.parseLong(req.getParameter("cartNo"));
+//		Long proNo = Long.parseLong(req.getParameter("proNo"));
+//		
+//		Order order = Order.builder().proPrice(proPrice).proName(proName).id("kal").cartNo(cartNo).proNo(proNo).build();
+//		orderService.register(order);
+	}
+
+}

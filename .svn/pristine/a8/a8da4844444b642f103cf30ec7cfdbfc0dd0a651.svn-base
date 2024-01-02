@@ -1,0 +1,9 @@
+package kr.co.jykjy.mapper;
+
+import kr.co.jykjy.domain.Cafe;
+
+public interface CafeMapper {
+	
+	public int insert(Cafe cafe);
+
+}

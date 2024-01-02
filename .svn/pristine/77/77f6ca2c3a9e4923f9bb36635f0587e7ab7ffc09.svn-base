@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jykjy.mapper.OrderMapper">
+	
+	<insert id="insert">
+		insert into tbl_order(orderCode, proPrice, address, totalPrice, proName, id, cafeNo, cartNo, proNo) 
+		values (#{orderCode}, #{proPrice}, #{address}, #{totalPrice}, #{proName}, #{id}, #{cafeNo}, #{cartNo}, #{proNo})
+		<selectKey keyProperty="orderNo" order="AFTER" resultType="long">
+			select max(orderNo) from tbl_order
+		</selectKey>
+	</insert>
+	
+	<select id="getOne" resultType="kr.co.jykjy.domain.Order">
+		select * from tbl_order where orderNo = #{orderNo}
+	</select>  
+	
+	<select id="getList" resultType="kr.co.jykjy.domain.Order">
+		<![CDATA[
+		select * from tbl_order where orderNo >= 0
+		]]>
+	</select>
+	
+	<delete id="delete">
+		delete from tbl_order where orderNo = #{orderNo}
+	</delete>
+
+	<select id="get" resultType="kr.co.jykjy.domain.Order">
+		select * from tbl_order where orderCode = #{orderCode}
+	</select>
+	
+</mapper>

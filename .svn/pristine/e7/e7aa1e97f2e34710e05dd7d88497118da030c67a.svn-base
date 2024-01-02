@@ -1,0 +1,144 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starbucks</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/app.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/product.css">
+</head>
+<body>
+    <div class="wrap">
+        <header class="sticky"> <!-- // 고정 -->
+            <div class="service">
+                <a class="history" href="javascript:history.back();"><i class="fas fa-chevron-left"></i></a>
+                <!-- <form class="search">
+                    <div class="overlay"></div>
+                    <input class="inp_search" name="keyword" placeholder="검색어를 입력하세요" />
+                    <button><i class="bi bi-search"></i></button>
+                </form>
+                <a class="cart" href="#"><i class="fab fa-opencart"></i></a> -->
+            </div>
+            <div class="static">
+                <h1 class="logo">Starbucks® Store</h1>
+            </div>
+            <%-- <jsp:include page="../includes/navLink.jsp" /> --%>
+        </header>
+        <main>
+            <div class="sbComponent statement">
+                <h3 class="title">결제하기</h3>
+                <div class="items">
+                    <h4>배송 정보 <button class="btnb">배송지 변경</button></h4>
+                    <ul>
+                        <li>
+                            <p class="addr">서울시 구로구 구로구 구로구 구로 구로 구로 구 구구 (206)</p>
+                        </li>
+                    </ul>
+                    <h4>주문 내역</h4>
+                    <ul>
+                        <li>
+                            <img class="thumb" src="img/product_1.jpg" />
+                            <p class="name">Clarks Wallabee Black Suede</p>
+                            <p class="price"><span>80,000</span>원</p>
+                        </li>
+                        <li>
+                            <img class="thumb" src="img/product_2.jpg" />
+                            <p class="name">Clarks Wallabee Black Suede</p>
+                            <p class="price"><span>80,000</span>원</p>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="receipt">
+                    <li>
+                        <p>
+                            <span>쿠폰 및 선물</span>
+                        </p>
+                        <ul>
+                            <li><span>쿠폰</span><span>없음</span></li>
+                            <li><span>선물</span><span>없음</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p class="cashReceipt">
+                            <span>현금영수증</span>
+                            <span><i class="fas fa-chevron-right"></i></span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span>주문 금액</span>
+                            <span>160,000원</span>
+                        </p>
+                        <ul>
+                            <li><span>상품금액</span><span>160,000원</span></li>
+                            <li><span>배송비</span><span>0원</span></li>
+                        </ul>
+                    </li> 
+                    <li>
+                        <p>
+                            <span>할인 금액</span>
+                            <span>0원</span>
+                        </p>
+                        <ul>
+                            <li><span>상품할인</span><span>0원</span></li>
+                            <li><span>배송비</span><span>0원</span></li>
+                        </ul>
+                    </li> 
+                    <li>
+                        <p>
+                            <span>결제 금액</span>
+                            <span>160,000원</span>
+                        </p>
+                    </li> 
+                    <li>
+                        <p>
+                            <span>최종 결제 금액</span>
+                            <span>160,000원</span>
+                        </p>
+                    </li>
+                </ul>
+                <div class="payment">
+                    <div class="inner">
+                        <a href="#" class="btnb" id="payment">160,000원 결제하기</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <jsp:include page="../includes/footer.jsp" />
+        <!-- modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        상품 구매를 하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-primary">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //modal -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/app.js"></script>
+    <script>
+    	const user = {
+        	id: '${member.id}',
+        	name: '${member.name}',
+        	phone: '${member.phone}',
+        	addr: '${member.addr}',
+      		email: '${member.email}',
+        };
+        
+        kakaoPay(user);
+        const buyButton = document.getElementById('payment').addEventListener('click', () => {
+        	kakaoPay(user);
+        });
+    </script>
+</body>
+</html>

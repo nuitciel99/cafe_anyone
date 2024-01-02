@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starbucks</title>
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+    <div class="wrap">
+    	<header class="sticky"> <!-- // 고정 -->
+            <div class="service">
+                <a class="history" href="#"><i class="fas fa-chevron-left"></i></a>
+                <form class="search">
+                    <div class="overlay"></div>
+                    <input class="inp_search" name="keyword" placeholder="검색어를 입력하세요" />
+                    <button><i class="bi bi-search"></i></button>
+                </form>
+                <a class="cart" href="#"><i class="fab fa-opencart"></i></a>
+            </div>
+            <div class="static">
+                <h1 class="logo">Starbucks® Store</h1>
+                <p class="welcome"><span>Welcome!</span>온라인 스토어에 오신 것을 환영합니다.</p>
+            </div>
+            <jsp:include page="../includes/navLink.jsp" />
+        </header>
+        <main>
+            <ul class="tab">
+                <li class="on"><a href="#">베스트</a></li>
+                <li><a href="#">텀블러/보온병</a></li>
+                <li><a href="#">머그/컵</a></li>
+                <li><a href="#">라이프스타일</a></li>
+                <li><a href="#">커피용품</a></li>
+            </ul>
+            <div class="product">
+                <div class="detail">
+                    <div class="image">
+                        <img src="img/product_1.jpg" />
+                    </div>
+                    <div class="info">
+                        <h3 class="title">머그</h3>
+                        <p class="name">Clarks Wallabee Black Suede</p>
+                        <p class="desc">다크 그린 컬러에 사이렌 로고가 매치된 473ml 머그입니다. 손잡이는 사용성을 고려하여 각진 형태로 제작하였습니다. 세라믹 재질로 남녀노소에게 사랑받을 클래식한 상품입니다. 전자레인지와 식기세척기 사용이 가능합니다.</p>
+                        <p class="price mt-5"><span>160,000</span>원</p>
+                    </div>
+                    <div class="payment">
+                        <div class="inner">
+                            <button class="btnb">구매하기</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="caution">
+                    <!-- 배송 안내 -->
+                    <dl>
+                        <dt>배송 안내</dt>
+                        <dd>· 배송비 3,000원 (배송 유형 별 결제금액 30,000원 이상 무료)</dd>
+                        <dd>· 배송 소요 기간은 배송지 입력 후 2~5일(영업일 기준) 소요되며, 휴일 포함 여부 및 상품 재고상황, 택배사 사정에 의해 지연될 수 있습니다.</dd>
+                        <dd>· 제주/도서산간 지역은 추가 운임이 발생할 수 있습니다.</dd>
+                        <dd>· 자세한 내용은 이용조건 및 배송 안내를 확인해 주세요.</dd>
+                    </dl>
+                    <!-- 교환/반품/취소 규정 -->
+                    <dl>
+                        <dt>교환/반품/취소 규정</dt>
+                        <dd>· 단순변심으로 인한 청약철회 시 상품도착 7일 이내에 구매자가 애플리케이션을 토해 신청 가능합니다.</dd>
+                        <dd>· 온라인 스토어에서 판매된 모든 상품은 모바일 애플리케이션 상으로만 교환/반품 신청이 가능하며, 매장 방문을 통한 교환/반품은 불가합니다.</dd>
+                        <dd>· 구매하신 상품에서 다른 상품으로의 교환은 불가하오니 주문 취소 또는 반품 후 재구매 하시기 바랍니다. (동일 금액의 다른 상품, 차액 지불 후 교환 불가)</dd>
+                        <dd>· 다음에 해당하는 경우에는 주문이 취소되거나 승인되지 않을 수 있으니 유의하시기 바랍니다.</dd>
+                    </dl>
+                </div>
+            </div>
+        </main>
+        <jsp:include page="../includes/footer.jsp" />
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script src="../../../js/app.js"></script>
+</body>
+</html>

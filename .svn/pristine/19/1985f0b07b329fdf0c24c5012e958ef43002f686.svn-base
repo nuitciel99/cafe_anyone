@@ -1,0 +1,17 @@
+package kr.co.jykjy.mapper;
+
+import org.junit.Test;
+
+import lombok.extern.log4j.Log4j;
+import util.MybatisUtils;
+
+@Log4j
+public class BoardMapperTests {
+	
+	private BoardMapper boardMapper = MybatisUtils.sqlSessionFactory().openSession().getMapper(BoardMapper.class);
+	
+	@Test
+	public void testGetList() {
+		boardMapper.getList().forEach(log::info);
+	}
+}

@@ -1,0 +1,34 @@
+package MemberMapperTests;
+
+import javax.servlet.annotation.WebServlet;
+
+import org.junit.Test;
+
+import kr.co.jykjy.domain.Member;
+import kr.co.jykjy.mapper.MemberMapper;
+import kr.co.jykjy.service.MemberService;
+import lombok.Builder;
+import lombok.extern.log4j.Log4j;
+import util.MybatisUtils;
+
+@Log4j
+
+public class MemberMapperTest {
+	private MemberMapper memberMapper = MybatisUtils.sqlSessionFactory().openSession(true)
+			.getMapper(MemberMapper.class);
+	
+
+	@Test
+	public void testsinup() {
+		Member member = Member.builder().id("galgal4").pw("1234").name("갈갈이사").phone("010-2234-5678")
+				.email("www503@naver.com").build();
+		log.info(member);
+		memberMapper.insert(member);
+	}
+//	@Test
+//	public void duplication() {
+//		Member member = Member.builder().id("galgal").build();
+//		log.info(isduplication(member.getId()));
+//	}
+	
+}

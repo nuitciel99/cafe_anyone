@@ -1,0 +1,75 @@
+package kr.co.jykjy.controller.order;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.domain.Criteria;
+import kr.co.jykjy.domain.PageDTO;
+import kr.co.jykjy.domain.PrAttach;
+import kr.co.jykjy.domain.Product;
+import kr.co.jykjy.service.CartService;
+import kr.co.jykjy.service.ProductService;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@WebServlet("/order/menu")
+public class OrderMenu extends HttpServlet{
+	
+	private ProductService productService = new ProductService();
+	private CartService cartService = new CartService();
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String cate = req.getParameter("category");
+		Criteria.CriteriaBuilder cb = Criteria.builder();
+		if(cate != null) { 
+			cb.category(Integer.parseInt(cate));
+		}
+		Criteria crietira = cb.build();
+		
+		long proNo = Long.parseLong(req.getParameter("proNo"));
+		Product product = productService.findByProNo(proNo);
+		product.setAttachs(productService.findByNo(product.getProNo()));
+		
+		req.setAttribute("pageDTO", new PageDTO(crietira, productService.getTotal(crietira)));
+		req.setAttribute("product", product);
+		req.getRequestDispatcher("/WEB-INF/views/order/orderStmt.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		String proName = req.getParameter("proName");
+		String proPrice = req.getParameter("proPrice");
+		String proAmt = req.getParameter("proAmt");
+		String stmt = req.getParameter("stmt"); // hot / ice
+		String cupSize = req.getParameter("cupSize"); // Tall / Grande / Venti 
+		String cupChoice = req.getParameter("cupChoice"); // 카페 컵 / 개인 컵 / 일회용 컵
+		String proNo = req.getParameter("proNo"); 
+		String cate = req.getParameter("category");
+		
+		Criteria.CriteriaBuilder cb = Criteria.builder();
+		log.info(""+proName +"::::::::::"+ proPrice + ":::::: " + stmt);
+		if(cate != null) {
+			cb.category(Integer.parseInt(cate));
+		}
+		
+		Criteria criteria = cb.build();
+		
+		Cart cart = Cart.builder().proName(proName).proPrice(proPrice).proAmt("1").stmt(stmt).cupSize(cupSize).cupChoice(cupChoice).proNo(proNo).id("sm").build();
+//		cartService.register(cart);
+		log.info(cart);
+		
+		resp.sendRedirect("/cafe/choice?");
+	}
+	
+}

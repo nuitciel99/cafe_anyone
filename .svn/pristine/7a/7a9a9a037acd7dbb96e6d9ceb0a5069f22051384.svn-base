@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jykjy.mapper.CafeMapper">
+	
+	<insert id="insert">
+		insert tbl_cafe(cafeNo, cafeAddr, cafeTell)
+		values (#{cafeNo}, #{cafeAddr}, #{cafeTell})
+	</insert>
+	
+	<select id="getList" resultType="kr.co.jykjy.domain.Cafe">
+		select * from tbl_cafe where cafeNo >= 0
+	</select>
+
+
+
+</mapper>

@@ -1,0 +1,54 @@
+package kr.co.jykjy.service;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Board;
+import kr.co.jykjy.domain.Criteria;
+import kr.co.jykjy.mapper.BoardMapper;
+import lombok.extern.log4j.Log4j;
+import util.MybatisUtils;
+
+@Log4j
+public class BoardService {
+	private BoardMapper boardMapper = MybatisUtils.sqlSessionFactory().openSession(true).getMapper(BoardMapper.class);
+	
+	public void getList() {
+		boardMapper.getList().forEach(board -> log.info(board));
+	}
+	
+	public void getList(Criteria criteria) {
+		boardMapper.getListsWithPaging(criteria).forEach(board -> log.info(board));
+	}
+	
+	public Board get(Long bno) {
+		return boardMapper.read(bno);
+	}
+	
+	public void register(Board board) {
+		boardMapper.insert(board);
+		log.info(board);
+		
+	}
+	
+	public void modify(Board board) {
+		boardMapper.update(board);
+		log.info(board);
+	}
+	
+	public void remove(Long bno) {
+		boardMapper.delete(bno);
+	}
+	
+	public List<Board> list(Criteria criteria) {
+		return boardMapper.getListsWithPaging(criteria);
+	}
+	
+	public void getTotal(Criteria criteria) {
+		boardMapper.getTotal(criteria);
+	}
+	// 카테고리별 총 게시글 수
+	public int getCount(Criteria criteria) {
+		return boardMapper.getCount(criteria);
+	}
+	
+}

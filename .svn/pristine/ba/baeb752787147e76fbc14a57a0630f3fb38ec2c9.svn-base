@@ -1,0 +1,19 @@
+package kr.co.jykjy.domain;
+
+import java.sql.Date;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class Member {
+	private String id;
+	private String pw;
+	private String name;
+	private String phone;
+	private String gradeNO;
+	private Date regdate;
+	private boolean admin;
+	private final String email;
+}

@@ -1,0 +1,21 @@
+package kr.co.jykjy.service;
+
+import kr.co.jykjy.domain.Member;
+import kr.co.jykjy.mapper.MemberMapper;
+import util.MybatisUtils;
+
+public class MemberServicelmpl implements MemberService {
+	private MemberMapper memberMapper = MybatisUtils.sqlSessionFactory().openSession(true)
+			.getMapper(MemberMapper.class);
+	@Override
+	public int signup(Member member) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isduplication(String id) {
+		return memberMapper.selectOneById(id) > 0 ? true : false;
+	}
+
+}

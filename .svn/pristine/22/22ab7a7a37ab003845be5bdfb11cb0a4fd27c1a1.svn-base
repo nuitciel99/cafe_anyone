@@ -1,0 +1,31 @@
+package kr.co.jykjy.domain;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Cart {
+	private int cartNo;
+	private String proName;
+	private String proPrice;
+	private String proAmt;
+	private String stmt;
+	private String cupSize;
+	private String cupChoice;
+	private int cartcate;
+	private String id;
+	private String proNo;
+	private Date regDate; 
+
+	@Builder.Default
+	private List<PrAttach> attachs = new ArrayList<>();
+}

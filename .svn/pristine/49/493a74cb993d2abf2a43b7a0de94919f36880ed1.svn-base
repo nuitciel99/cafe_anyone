@@ -1,0 +1,47 @@
+package kr.co.jykjy.service;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.domain.Review;
+import kr.co.jykjy.mapper.CartMapper;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import util.MybatisUtils;
+
+@Log4j
+@NoArgsConstructor(access=AccessLevel.PRIVATE)
+public class CartService{
+	@Getter
+	private static CartService cartService = new CartService();
+	private SqlSession sqlSession = MybatisUtils.sqlSessionFactory().openSession(true);
+	private CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);;
+
+	public int register(Cart cart) {
+		return cartMapper.insert(cart);
+	}
+
+	public void getCart(int cartNo) {
+		Cart cart = new Cart();
+		cartMapper.getCart(cartNo);
+		log.info(cart);
+	}
+	
+	public void remove(int proNo) {
+		cartMapper.delete(proNo);
+	}
+
+	public void removeAll(int cartNo) {
+		cartMapper.deleteAll(cartNo);
+	}
+	
+	public List<Cart> getList(String id) {
+		return cartMapper.getList(id);
+	}
+	
+	
+}

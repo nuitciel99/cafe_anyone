@@ -1,0 +1,43 @@
+package kr.co.jykjy.service;
+
+import org.junit.Test;
+
+import kr.co.jykjy.domain.Order;
+import kr.co.jykjy.service.order.OrderService;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class OrderServiceTests {
+	
+	@Setter
+	private OrderService orderService;
+	
+	@Test
+	public void testInsert() {
+		Order order = new Order();
+		order.setOrderCode(1L);
+		order.setTotalPrice("4500");
+		order.setProName("아메리카노");
+		order.setId("galgal");
+		
+		orderService.register(order);
+		log.info(order);
+	} 
+	
+	@Test
+	public void testGet() {
+		log.info(orderService.get(0));
+	}
+	
+	@Test
+	public void testGetList() {
+		orderService.getList().forEach(order -> log.info(order));
+	}
+	
+	@Test
+	public void testRemove(int orderNo) {
+		orderService.remove(0);
+	}
+	
+}

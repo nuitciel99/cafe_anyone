@@ -1,0 +1,39 @@
+package kr.co.jykjy.service.cart;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.mapper.CartMapper;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import util.MybatisUtils;
+
+@Log4j
+public class CartService{
+	
+	private CartMapper cartMapper  = MybatisUtils.sqlSessionFactory().openSession(true).getMapper(CartMapper.class);;
+
+	public void register(Cart cart) {
+	
+		cartMapper.insert(cart);
+		log.info(cart);
+	}
+
+	public void getCart(int cartNo) {
+		Cart cart = new Cart();
+		cartMapper.getCart(cartNo);
+		log.info(cart);
+	}
+	
+	public void remove(int proNo) {
+		cartMapper.delete(proNo);
+	}
+
+	public void removeAll(int cartNo) {
+		cartMapper.deleteAll(cartNo);
+	}
+	
+	
+	
+	
+}

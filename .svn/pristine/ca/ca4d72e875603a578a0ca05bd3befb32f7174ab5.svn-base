@@ -1,0 +1,45 @@
+package kr.co.jykjy.service.order;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Order;
+import kr.co.jykjy.mapper.OrderMapper;
+import lombok.AllArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import util.MybatisUtils;
+
+@Log4j
+@AllArgsConstructor
+public class OrderService{
+	
+	@Setter
+	private OrderMapper orderMapper = MybatisUtils.sqlSessionFactory().openSession(true).getMapper(OrderMapper.class);
+
+	public void register(Order order) {
+		order.setOrderCode(1L);
+		order.setTotalPrice("4500");
+		order.setProName("카페 라떼");
+		order.setId("galgal");
+		
+		orderMapper.insert(order);
+		log.info(order);
+	}
+
+	public Order get(int orderNo) {
+		Order order = new Order();
+		log.info(order);
+		return orderMapper.getOne(orderNo);
+	}
+
+	public List<Order> getList() {
+		orderMapper.getList().forEach(order -> log.info(order));
+		return orderMapper.getList();
+	}
+
+	public void remove(int orderNo) {
+		orderMapper.delete(orderNo);
+	}
+	
+	
+}

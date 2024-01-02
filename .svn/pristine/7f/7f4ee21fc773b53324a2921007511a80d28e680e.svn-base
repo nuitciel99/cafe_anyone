@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starbucks</title>
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+    <div class="wrap">
+        <main>
+            <ul class="tab">
+                <li class="on"><a href="#">베스트</a></li>
+                <li><a href="#">텀블러/보온병</a></li>
+                <li><a href="#">머그/컵</a></li>
+                <li><a href="#">라이프스타일</a></li>
+                <li><a href="#">커피용품</a></li>
+            </ul>
+            <div class="product">
+                <div class="detail">
+                    <div class="image">
+                        <img src="img/product_1.jpg" />
+                    </div>
+                    <p class="name">Clarks Wallabee Black Suede</p>
+                    <p class="score"><i class="fas fa-star"></i>4.8</p>
+                    <p class="review">리뷰 10,345</p>
+                    <p class="price"><span>160,000</span>원</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script>
+        const scrollPosition = () => {
+            const header = document.querySelector('header');
+            let scroll = this.scrollY;
+            let headheight = header.clientHeight;
+            
+            if(scroll > headheight) {
+                header.classList.add('fixed');
+            } else {
+                header.classList.remove('fixed');
+            }
+        }
+
+        window.addEventListener('load', scrollPosition);
+        window.addEventListener('scroll', scrollPosition);
+    </script>
+</body>
+</html>

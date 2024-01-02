@@ -1,0 +1,52 @@
+package kr.co.jykjy.controller.order;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.jykjy.domain.Cart;
+import kr.co.jykjy.domain.Order;
+import kr.co.jykjy.service.CartService;
+import kr.co.jykjy.service.OrderService;
+import kr.co.jykjy.service.ProductService;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@WebServlet("/order/payment")
+public class Payment extends HttpServlet{
+	
+	private ProductService productService = ProductService.getProductService();
+	private CartService cartService = CartService.getCartService();
+	private OrderService orderService = OrderService.getOrderService();
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		List<Cart> cart = cartService.getList("kal");
+		for(Cart c : cart) {
+			c.setAttachs(productService.findByNo(c.getProNo()));
+			log.info("ProPrice :: " + c.getProPrice() + c.getProPrice().getClass().getName());
+		}
+		req.setAttribute("cart", cart);
+		
+		req.getRequestDispatcher("/WEB-INF/views/order/payment.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		Long cartNo = Long.parseLong(req.getParameter("cartNo"));
+		Long proNo = Long.parseLong(req.getParameter("proNo"));
+		String proName = req.getParameter("proName");
+		String proPrice = req.getParameter("proPrice");
+		
+		Order order = Order.builder().orderCode(1L).proPrice(proPrice).address("주소").totalPrice("100").proName(proName).id("kal").cartNo(cartNo).proNo(proNo).build();
+		orderService.register(order);
+	}
+
+}

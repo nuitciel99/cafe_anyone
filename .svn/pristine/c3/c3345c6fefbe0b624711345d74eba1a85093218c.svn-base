@@ -1,0 +1,45 @@
+package kr.co.jykjy.controller.member;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.jykjy.domain.Member;
+import kr.co.jykjy.mapper.MemberMapper;
+import lombok.Builder;
+import util.MybatisUtils;
+
+@WebServlet("/member/signup")
+public class memberSinupController extends HttpServlet {
+	private MemberMapper memberMapper = MybatisUtils.sqlSessionFactory().openSession(true)
+			.getMapper(MemberMapper.class);
+	
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/WEB-INF/views/member/signup.jsp").forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		String id = req.getParameter("id");
+		String pw  = req.getParameter("pw");
+		String name = req.getParameter("name");
+		String phone = req.getParameter("phone");
+		String email = req.getParameter("email");
+		String addr = req.getParameter("addr");
+		
+		Member member = Member.builder().id(id).pw(pw).name(name).phone(phone).email(email).addr(addr).build();
+		
+		System.out.println(member);
+		
+		memberMapper.insert(member);
+		
+	}
+
+}

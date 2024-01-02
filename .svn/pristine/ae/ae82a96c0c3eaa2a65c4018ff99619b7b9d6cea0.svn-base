@@ -1,0 +1,23 @@
+package kr.co.jykjy.mapper;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Order;
+
+/**
+ * 
+ * @author kss kjy
+ * @ 상품 결제 라인
+ */
+
+public interface OrderMapper {
+	public Order getOne(Long orderNo); // 주문 상품 조회
+
+	public List<Order> getList(); // 주문 상품 목록
+	
+	public void delete(Long orderNo); // 주문 내역 삭제
+	
+	public int insert(Order order); // 주문 추가
+	
+	public List<Order> get(String id); // 주문 조회
+}

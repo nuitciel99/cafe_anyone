@@ -1,0 +1,7 @@
+package kr.co.jykjy.mapper;
+
+import kr.co.jykjy.domain.CfAttach;
+
+public interface CfAttachMapper {
+	public int attachInsert(CfAttach cfAttach);
+}

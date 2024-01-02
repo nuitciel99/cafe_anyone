@@ -1,0 +1,27 @@
+package kr.co.jykjy.service;
+
+import org.junit.Test;
+
+import kr.co.jykjy.domain.Member;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class MemberServiceTests {
+	MemberService memberService = new MemberService();
+	
+	@Test
+	public void testmyBoard() {
+		memberService.findBoard("galgal5");
+	}
+	@Test
+	public void testsignup() {
+		Member member =
+		Member.builder().id("pak").pw("1234")
+				.name("제이팍").phone("010-2234-5678").email("www503@naver.com").gradeNO("gold").addr("구룡포").build();
+		memberService.signup(member);
+	}
+	@Test
+	public void testRead() {
+		memberService.getMember("pak");
+	}
+}

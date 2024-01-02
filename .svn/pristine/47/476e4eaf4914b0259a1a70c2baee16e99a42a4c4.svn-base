@@ -1,0 +1,43 @@
+package kr.co.jykjy.service;
+ 
+import org.junit.Test;
+
+import kr.co.jykjy.domain.Order;
+import kr.co.jykjy.service.OrderService;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class OrderServiceTests {
+	
+	private OrderService orderService = new OrderService();
+	
+	@Test
+	public void testInsert() {
+		Order order = new Order();
+		order.setOrderCode(1L);
+		order.setTotalPrice("4500");
+		order.setProName("카페라떼");
+		order.setId("galgal");
+		
+		orderService.register(order);
+		log.info(order);
+	} 
+	
+	@Test
+	public void testGet() {
+		Order order = new Order();
+		orderService.get(3);
+		log.info(order);
+	}
+	
+	@Test
+	public void testGetList() {
+		orderService.getList();
+	}
+	
+	@Test
+	public void testRemove() {
+		orderService.remove(3);
+	}
+	
+}

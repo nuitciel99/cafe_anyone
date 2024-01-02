@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jykjy.mapper.CartMapper">
+	
+	<insert id="insert">
+		insert tbl_cart(cartNo, proPrice, proAmt, id, proNo) 
+		values (#{cartNo}, #{proPrice}, #{proAmt}, #{id}, #{proNo})
+	</insert>
+	
+	<select id="getCart" resultType="kr.co.jykjy.domain.Cart">
+		select * from tbl_cart where cartNo >= 0
+	</select> 
+	
+	<update id="update">
+		update tbl_cart set proAmt = #{proAmt}
+	</update>
+	
+	<delete id="delete">
+		delete from tbl_cart where proNO = #{proNO}
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from tbl_cart where cartNo=#{cartNo}
+	</delete>
+
+
+</mapper>

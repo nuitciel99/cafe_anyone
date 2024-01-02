@@ -1,0 +1,29 @@
+package kr.co.jykjy.domain;
+
+import java.util.Date;
+
+import org.apache.ibatis.type.Alias;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Order {
+	private Long orderNo;
+	private Long orderCode;
+	private String proPrice;
+	private String address;
+	private String totalPrice;
+	private String proName;
+	private Date orderDate;
+	private String id;
+	private Long cafeNo;
+	private Long cartNo;
+	private Long proNo;
+
+}

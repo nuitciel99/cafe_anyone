@@ -1,0 +1,21 @@
+package kr.co.jykjy.mapper;
+
+import java.util.List;
+
+import kr.co.jykjy.domain.Criteria;
+import kr.co.jykjy.domain.Product;
+
+public interface ProductMapper {
+	
+	public List<Product> getList(Criteria cri);
+
+	public int insert(Product product);
+	
+	public Product findByProNo(Long proNo);
+	
+	public int getTotalCount(Criteria cri);
+	
+	public int delete(Long proNo);
+	
+	public int update(Product product);
+}
