@@ -1,6 +1,15 @@
+# CAFE WEB with servlet
+
+- Project Name : Cafe AnyOne
+- Project Member : 백혜윤(조장), 김종윤(본인), 갈연수, 권성수
+
+# My Service
+
+- 장바구니 / 메뉴 구매 (결제) / 지도 API
+
 # Tools
 
-Java, Java Script, Apache Maven, JSP, MyBatis, Ajax, JSTL, Map API, Mail API, Gson
+Java / Java Script / Apache Maven / JSP / MyBatis / Ajax / JSTL / Map API / Mail API / Gson
 
 # Api test with swagger
 
