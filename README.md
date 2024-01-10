@@ -3,9 +3,12 @@
 - Project Name : Cafe AnyOne
 - Project Member : 백혜윤(팀장), 김종윤(본인), 갈연수, 권성수
 
-# My Service
+# Service
 
-- 장바구니 / 메뉴 구매 (결제) / 지도 API
+- 회원 관리 : 갈연수
+- 장바구니 / 메뉴 구매 (결제) / 지도 API : 김종윤
+- 상품 관리 / 상품 구매 (결제) : 권성수
+- 게시판 : 백혜윤
 
 # Tools
 
