@@ -14,7 +14,7 @@
 
 Java / Java Script / Apache Maven / JSP / MyBatis / Ajax / JSTL / Map API / Mail API / Gson
 
-# Api test with swagger
+# URL & Image
 
 - Menu List
 
