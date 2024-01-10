@@ -1,7 +1,7 @@
 # CAFE WEB with servlet
 
 - Project Name : Cafe AnyOne
-- Project Member : 백혜윤(조장), 김종윤(본인), 갈연수, 권성수
+- Project Member : 백혜윤(팀장), 김종윤(본인), 갈연수, 권성수
 
 # My Service
 
